@@ -6,7 +6,8 @@
 <title>課程內容專業驗收表 - FA 審核</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: "Microsoft JhengHei", "微軟正黑體", "PingFang TC", "Heiti TC", Arial, sans-serif; background: #f5f5f5; padding: 20px; line-height: 1.6; }
+/* 修正 1：調整跨平台字體優先順序，讓 Mac 優先抓取蘋果字體 */
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif; background: #f5f5f5; padding: 20px; line-height: 1.6; }
 .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 h1 { text-align: center; font-size: 24px; margin-bottom: 10px; color: #333; }
 .subtitle { text-align: center; font-size: 16px; color: #666; margin-bottom: 30px; font-weight: normal; }
@@ -16,26 +17,9 @@ h1 { text-align: center; font-size: 24px; margin-bottom: 10px; color: #333; }
 label { font-weight: bold; margin-right: 10px; color: #555; min-width: 100px; padding-top: 8px; }
 input[type="text"], input[type="url"], input[type="date"] { flex: 1; padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; font-family: inherit; }
 input[readonly] { background: #f9f9f9; color: #666; cursor: not-allowed; }
-textarea.form-textarea {
-flex: 1;
-padding: 8px 12px;
-border: 1px solid #ddd;
-border-radius: 4px;
-font-size: 14px;
-font-family: inherit;
-resize: vertical;
-min-height: 38px;
-line-height: 1.5;
-}
-textarea.form-textarea:focus {
-outline: 1px solid #4CAF50;
-border-color: #4CAF50;
-}
-textarea[readonly] {
-background: #f9f9f9;
-color: #666;
-cursor: not-allowed;
-}
+textarea.form-textarea {flex: 1;padding: 8px 12px;border: 1px solid #ddd;border-radius: 4px;font-size: 14px;font-family: inherit;resize: vertical;min-height: 38px;line-height: 1.5;}
+textarea.form-textarea:focus {outline: 1px solid #4CAF50;border-color: #4CAF50;}
+textarea[readonly] {background: #f9f9f9;color: #666;cursor: not-allowed;}
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
 .info-item { display: flex; align-items: flex-start; }
 .info-item label { min-width: 90px; margin-bottom: 0; padding-top: 8px; }
@@ -46,31 +30,10 @@ table th { background: #f8f8f8; font-weight: bold; color: #333; }
 table input[type="text"], table input[type="date"] { width: 100%; border: 1px solid transparent; padding: 5px; background: transparent; }
 table input[type="text"]:focus, table input[type="date"]:focus { outline: 1px solid #4CAF50; border-radius: 3px; background: white;}
 table input[readonly] { background: #f9f9f9; color: #666; }
-table textarea { 
-width: 100%; 
-border: 1px solid #ddd; 
-padding: 8px; 
-background: white;
-font-size: 14px;
-font-family: inherit;
-resize: vertical;
-min-height: 60px;
-line-height: 1.5;
-border-radius: 3px;
-}
-table textarea:focus { 
-outline: 1px solid #4CAF50; 
-border-color: #4CAF50;
-}
-table textarea.editable-field {
-border: 1px solid #e0e0e0;
-background: #fafafa;
-min-height: 50px;
-}
-table textarea.editable-field:focus {
-background: white;
-border-color: #4CAF50;
-}
+table textarea { width: 100%; border: 1px solid #ddd; padding: 8px; background: white;font-size: 14px;font-family: inherit;resize: vertical;min-height: 60px;line-height: 1.5;border-radius: 3px;}
+table textarea:focus { outline: 1px solid #4CAF50; border-color: #4CAF50;}
+table textarea.editable-field {border: 1px solid #e0e0e0;background: #fafafa;min-height: 50px;}
+table textarea.editable-field:focus {background: white;border-color: #4CAF50;}
 .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
 .checkbox-item { display: flex; align-items: center; gap: 5px; }
 .checkbox-item input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
@@ -88,138 +51,30 @@ border-color: #4CAF50;
 .radio-item label { font-weight: normal; min-width: auto; margin: 0;}
 
 /* 簽署區域樣式 */
-.signature-section { 
-margin-bottom: 20px;
-page-break-inside: avoid;
--webkit-column-break-inside: avoid;
-break-inside: avoid;
-}
-.signature-header { 
-display: flex; 
-justify-content: space-between; 
-align-items: center; 
-margin-bottom: 15px; 
-}
+.signature-section { margin-bottom: 20px;page-break-inside: avoid;-webkit-column-break-inside: avoid;break-inside: avoid;}
+.signature-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
 .signature-header h3 { font-size: 16px; color: #333; }
 
 /* 電子簽名樣式 */
-.signature-row { 
-display: grid; 
-grid-template-columns: 1fr 1fr; 
-gap: 15px; 
-align-items: flex-start; 
-margin-bottom: 15px; 
-padding: 15px; 
-border-radius: 8px; 
-border-left: 4px solid;
-page-break-inside: avoid;
--webkit-column-break-inside: avoid;
-break-inside: avoid;
-}
+.signature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: flex-start; margin-bottom: 15px; padding: 15px; border-radius: 8px; border-left: 4px solid;page-break-inside: avoid;-webkit-column-break-inside: avoid;break-inside: avoid;}
+.review-section .signature-row {background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);border-left-color: #2196F3;}
+.supervisor-section .signature-row {background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);border-left-color: #4CAF50;}
 
-.review-section .signature-row {
-background: linear-gradient(135deg, #e3f2fd 0%, #f0f7ff 100%);
-border-left-color: #2196F3;
-}
-.supervisor-section .signature-row {
-background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f4 100%);
-border-left-color: #4CAF50;
-}
+.signature-upload-container {display: flex;flex-direction: column;gap: 10px;}
+.signature-preview {width: 100%;min-height: 80px;max-height: 120px;border: 2px dashed #ccc;border-radius: 8px;display: flex;align-items: center;justify-content: center;background: white;position: relative;overflow: hidden;}
+.signature-preview.has-image {border-style: solid;border-color: #4CAF50;}
+.signature-preview img {max-width: 100%;max-height: 100%;object-fit: contain;}
+.signature-placeholder {color: #999;font-size: 14px;text-align: center;padding: 10px;}
 
-.signature-upload-container {
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-.signature-preview {
-width: 100%;
-min-height: 80px;
-max-height: 120px;
-border: 2px dashed #ccc;
-border-radius: 8px;
-display: flex;
-align-items: center;
-justify-content: center;
-background: white;
-position: relative;
-overflow: hidden;
-}
-
-.signature-preview.has-image {
-border-style: solid;
-border-color: #4CAF50;
-}
-
-.signature-preview img {
-max-width: 100%;
-max-height: 100%;
-object-fit: contain;
-}
-
-.signature-placeholder {
-color: #999;
-font-size: 14px;
-text-align: center;
-padding: 10px;
-}
-
-.signature-buttons {
-display: flex;
-gap: 8px;
-}
-
-.btn-upload-signature {
-flex: 1;
-padding: 8px 16px;
-background: #2196F3;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 14px;
-transition: background 0.3s;
-}
-
-.btn-upload-signature:hover {
-background: #1976D2;
-}
-
-.btn-clear-signature {
-padding: 8px 16px;
-background: #f44336;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 14px;
-transition: background 0.3s;
-}
-
-.btn-clear-signature:hover {
-background: #d32f2f;
-}
-
-.signature-input {
-display: none;
-}
+.signature-buttons {display: flex;gap: 8px;}
+.btn-upload-signature {flex: 1;padding: 8px 16px;background: #2196F3;color: white;border: none;border-radius: 4px;cursor: pointer;font-size: 14px;transition: background 0.3s;}
+.btn-upload-signature:hover {background: #1976D2;}
+.btn-clear-signature {padding: 8px 16px;background: #f44336;color: white;border: none;border-radius: 4px;cursor: pointer;font-size: 14px;transition: background 0.3s;}
+.btn-clear-signature:hover {background: #d32f2f;}
+.signature-input {display: none;}
 
 .action-buttons { display: flex; gap: 8px; align-items: center; }
-.btn-icon { 
-width: 36px; 
-height: 36px; 
-padding: 0; 
-font-size: 20px; 
-font-weight: bold;
-border: none; 
-border-radius: 4px; 
-cursor: pointer; 
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.2s;
-}
+.btn-icon { width: 36px; height: 36px; padding: 0; font-size: 20px; font-weight: bold;border: none; border-radius: 4px; cursor: pointer; color: white;display: flex;align-items: center;justify-content: center;transition: all 0.2s;}
 .btn-add { background: #4CAF50; }
 .btn-add:hover { background: #45a049; transform: scale(1.05); }
 .btn-remove { background: #f44336; }
@@ -238,859 +93,707 @@ button { padding: 12px 30px; font-size: 16px; border: none; border-radius: 4px; 
 .alert-warning { background: #FFF3E0; color: #F57C00; border-left: 4px solid #FF9800; }
 
 input[type="file"] { display: none; }
-
 #alertContainer { position: relative; }
 
 /* Mac PDF 列印優化樣式 */
 @media print { 
-@page {
-  size: A4;
-  margin: 1.5cm 1cm;
-}
+  /* 修正 2：確保所有元素在列印時強制繼承 body 的跨平台字體 */
+  *, input, textarea, th, td { font-family: inherit !important; }
 
-body { 
-  background: white; 
-  padding: 0; 
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-  color-adjust: exact !important;
-} 
+  @page {  size: A4;  margin: 1.5cm 1cm;}
+  body {   background: white;   padding: 0;   -webkit-print-color-adjust: exact !important;  print-color-adjust: exact !important;  color-adjust: exact !important;} 
+  .container {   box-shadow: none;   padding: 0;  max-width: 100%;} 
+  .btn-group, .alert, .action-buttons, .no-print, .readonly-badge, .signature-buttons {   display: none !important; } 
+  .readonly-section {   background: transparent;   border: none;   padding: 0; }
 
-.container { 
-  box-shadow: none; 
-  padding: 0;
-  max-width: 100%;
-} 
+  /* 輸入框列印優化 */
+  input {   border: none !important;   background: transparent !important;  color: #000 !important;  -webkit-appearance: none !important;}
+  input:focus {   outline: none !important; }
 
-.btn-group, .alert, .action-buttons, .no-print, .readonly-badge, .signature-buttons { 
-  display: none !important; 
-} 
+  /* Textarea 列印優化 */
+  textarea {   border: none !important;  background: transparent !important;  resize: none !important;  overflow: visible !important;  padding: 0 !important;  color: #000 !important;  -webkit-appearance: none !important;}
+  textarea::placeholder {   color: transparent !important; }
+  textarea:focus {   outline: none !important; }
 
-.readonly-section { 
-  background: transparent; 
-  border: none; 
-  padding: 0; 
-}
+  /* 表格列印優化 */
+  table {   page-break-inside: auto;  border-collapse: collapse !important;}
+  table tr {   page-break-inside: avoid;  page-break-after: auto;}
+  table td {   padding: 8px;  border: 1px solid #000 !important;}
+  table th {  border: 1px solid #000 !important;  background-color: #f0f0f0 !important;  -webkit-print-color-adjust: exact !important;  print-color-adjust: exact !important;}
 
-/* 輸入框列印優化 */
-input { 
-  border: none !important; 
-  background: transparent !important;
-  color: #000 !important;
-  -webkit-appearance: none !important;
-}
+  /* 簽署區域列印優化 - 關鍵修正 */
+  .signature-section {   page-break-inside: avoid !important;  -webkit-column-break-inside: avoid !important;  break-inside: avoid !important;  display: block !important;  margin-bottom: 20px !important;}
+  .signature-row {   display: grid !important;  grid-template-columns: 1fr 1fr !important;  gap: 15px !important;  padding: 10px 15px !important;  page-break-inside: avoid !important;  -webkit-column-break-inside: avoid !important;  break-inside: avoid !important;  border-radius: 4px !important;  margin-bottom: 10px !important;}
 
-input:focus { 
-  outline: none !important; 
-}
+  /* 確保背景色在 Mac 上顯示 */
+  .review-section .signature-row {  background: #e3f2fd !important;  border-left: 4px solid #2196F3 !important;  -webkit-print-color-adjust: exact !important;  print-color-adjust: exact !important;  color-adjust: exact !important;}
+  .supervisor-section .signature-row {  background: #e8f5e9 !important;  border-left: 4px solid #4CAF50 !important;  -webkit-print-color-adjust: exact !important;  print-color-adjust: exact !important;  color-adjust: exact !important;}
 
-/* Textarea 列印優化 */
-textarea { 
-  border: none !important;
-  background: transparent !important;
-  resize: none !important;
-  overflow: visible !important;
-  padding: 0 !important;
-  color: #000 !important;
-  -webkit-appearance: none !important;
-}
+  .signature-preview {  border: 1px solid #666 !important;  min-height: 80px !important;  max-height: 100px !important;  page-break-inside: avoid !important;  display: flex !important;  align-items: center !important;  justify-content: center !important;  background: white !important;}
+  .signature-preview img {  max-height: 90px !important;  max-width: 100% !important;  object-fit: contain !important;}
 
-textarea::placeholder { 
-  color: transparent !important; 
-}
+  /* 確保簽署區塊不跨頁 */
+  .section:last-of-type {  page-break-inside: avoid !important;}
 
-textarea:focus { 
-  outline: none !important; 
-}
+  /* 標題不跨頁 */
+  h1, h3, .section-title {  page-break-after: avoid !important;}
 
-/* 表格列印優化 */
-table { 
-  page-break-inside: auto;
-  border-collapse: collapse !important;
-}
-
-table tr { 
-  page-break-inside: avoid;
-  page-break-after: auto;
-}
-
-table td { 
-  padding: 8px;
-  border: 1px solid #000 !important;
-}
-
-table th {
-  border: 1px solid #000 !important;
-  background-color: #f0f0f0 !important;
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-}
-
-/* 簽署區域列印優化 - 關鍵修正 */
-.signature-section { 
-  page-break-inside: avoid !important;
-  -webkit-column-break-inside: avoid !important;
-  break-inside: avoid !important;
-  display: block !important;
-  margin-bottom: 20px !important;
-}
-
-.signature-row { 
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 15px !important;
-  padding: 10px 15px !important;
-  page-break-inside: avoid !important;
-  -webkit-column-break-inside: avoid !important;
-  break-inside: avoid !important;
-  border-radius: 4px !important;
-  margin-bottom: 10px !important;
-}
-
-/* 確保背景色在 Mac 上顯示 */
-.review-section .signature-row {
-  background: #e3f2fd !important;
-  border-left: 4px solid #2196F3 !important;
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-  color-adjust: exact !important;
-}
-
-.supervisor-section .signature-row {
-  background: #e8f5e9 !important;
-  border-left: 4px solid #4CAF50 !important;
-  -webkit-print-color-adjust: exact !important;
-  print-color-adjust: exact !important;
-  color-adjust: exact !important;
-}
-
-.signature-preview {
-  border: 1px solid #666 !important;
-  min-height: 80px !important;
-  max-height: 100px !important;
-  page-break-inside: avoid !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: white !important;
-}
-
-.signature-preview img {
-  max-height: 90px !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-}
-
-/* 確保簽署區塊不跨頁 */
-.section:last-of-type {
-  page-break-inside: avoid !important;
-}
-
-/* 標題不跨頁 */
-h1, h3, .section-title {
-  page-break-after: avoid !important;
-}
-
-/* Checkbox 和 Radio 列印優化 */
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  width: 14px !important;
-  height: 14px !important;
-  border: 1px solid #000 !important;
-  background: white !important;
-  position: relative !important;
-  display: inline-block !important;
-  vertical-align: middle !important;
-}
-
-input[type="checkbox"]:checked::before {
-  content: "✓" !important;
-  position: absolute !important;
-  top: -2px !important;
-  left: 1px !important;
-  font-size: 12px !important;
-  color: #000 !important;
-}
-
-input[type="radio"] {
-  border-radius: 50% !important;
-}
-
-input[type="radio"]:checked::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 3px !important;
-  left: 3px !important;
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 50% !important;
-  background: #000 !important;
-}
+  /* Checkbox 和 Radio 列印優化 */
+  input[type="checkbox"],input[type="radio"] {  -webkit-appearance: none !important;  appearance: none !important;  width: 14px !important;  height: 14px !important;  border: 1px solid #000 !important;  background: white !important;  position: relative !important;  display: inline-block !important;  vertical-align: middle !important;}
+  input[type="checkbox"]:checked::before {  content: "✓" !important;  position: absolute !important;  top: -2px !important;  left: 1px !important;  font-size: 12px !important;  color: #000 !important;}
+  input[type="radio"] {  border-radius: 50% !important;}
+  input[type="radio"]:checked::before {  content: "" !important;  position: absolute !important;  top: 3px !important;  left: 3px !important;  width: 6px !important;  height: 6px !important;  border-radius: 50% !important;  background: #000 !important;}
 }
 
 /* Safari 特定修正 */
 @supports (-webkit-appearance: none) {
-@media print {
-  * {
-    -webkit-print-color-adjust: exact !important;
+  @media print {  
+    * { -webkit-print-color-adjust: exact !important; }    
+    .signature-row { -webkit-box-decoration-break: clone !important; }
   }
-  
-  .signature-row {
-    -webkit-box-decoration-break: clone !important;
-  }
-}
 }
 </style>
 </head>
 <body>
 <div class="container" id="exportContent">
-<h1>課程內容專業驗收表(講師內容)</h1>
-<p class="subtitle">FA 審核表單</p>
+  <h1>課程內容專業驗收表(講師內容)</h1>
+  <p class="subtitle">FA 審核表單</p>
 
-<div id="alertContainer">
-<div class="alert alert-warning" id="importAlert">
-  <strong>⚠️ 請先匯入 PM 提供的 JSON 資料檔案</strong><br>
-  點擊下方「📤 匯入 PM 資料」按鈕開始。
-</div>
-</div>
-
-<form id="faForm">
-<div class="section readonly-section" id="pmDataSection">
-  <span class="readonly-badge">📋 PM 填寫資料（唯讀）</span>
-  
-  <div class="section-title">一、課程課綱/腳本＆後台連結</div>
-  <div class="form-group">
-    <label>雲端連結：</label>
-    <textarea class="form-textarea" name="cloudLink" readonly oninput="autoResize(this)"></textarea>
-  </div>
-  <div class="form-group">
-    <label>後台連結：</label>
-    <textarea class="form-textarea" name="backendLink" readonly oninput="autoResize(this)"></textarea>
-  </div>
-  
-  <div class="section-title" style="margin-top: 20px;">二、製作項目</div>
-  <div class="info-grid">
-    <div class="info-item"><label>課程組合：</label><textarea class="form-textarea" name="courseCombination" readonly oninput="autoResize(this)"></textarea></div>
-    <div class="info-item"><label>負責PM：</label><textarea class="form-textarea" name="pmName" readonly oninput="autoResize(this)"></textarea></div>
-    <div class="info-item"><label>章節名稱：</label><textarea class="form-textarea" name="chapterName" readonly oninput="autoResize(this)"></textarea></div>
-    <div class="info-item"><label>合作講師：</label><textarea class="form-textarea" name="instructorName" readonly oninput="autoResize(this)"></textarea></div>
-  </div>
-  
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 10%;">項次</th>
-        <th style="width: 40%;">單元名稱</th>
-        <th style="width: 20%;">分鐘數</th>
-        <th style="width: 30%;">驗收日期</th>
-      </tr>
-    </thead>
-    <tbody id="unitTableBody">
-      <tr>
-        <td colspan="4" style="text-align: center; color: #999;">尚未匯入 PM 資料</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <div class="section-title" style="margin-top: 20px;">三、附件清單（請勾選收到之內容）</div>
-  <div class="checkbox-group">
-    <div class="checkbox-item"><input type="checkbox" id="attach1" name="attachments" disabled><label for="attach1">講稿／逐字稿</label></div>
-    <div class="checkbox-item"><input type="checkbox" id="attach2" name="attachments" disabled><label for="attach2">課程教材／補充資料</label></div>
-    <div class="checkbox-item"><input type="checkbox" id="attach3" name="attachments" disabled><label for="attach3">簡報檔（PPT／PDF）</label></div>
-    <div class="checkbox-item"><input type="checkbox" id="attach4" name="attachments" disabled><label for="attach4">作業</label></div>
-    <div class="checkbox-item">
-      <input type="checkbox" id="attach5" name="attachments" disabled><label for="attach5">其他：</label>
-      <textarea class="form-textarea" name="attachmentOther" readonly style="width: 250px; margin-left: 5px; min-height: 38px;" oninput="autoResize(this)"></textarea>
+  <div id="alertContainer">
+    <div class="alert alert-warning" id="importAlert">
+      <strong>⚠️ 請先匯入 PM 提供的 JSON 資料檔案</strong><br>
+      點擊下方「📤 匯入 PM 資料」按鈕開始。
     </div>
   </div>
-  
-  <div class="info-grid" style="margin-top: 20px;">
-    <div class="info-item"><label>上架人員：</label><textarea class="form-textarea" name="uploader" readonly oninput="autoResize(this)"></textarea></div>
-    <div class="info-item"><label>上架日：</label><input type="date" name="uploadDate" readonly></div>
-  </div>
-</div>
 
-<div class="section">
-  <div class="section-title">四、專業內容檢核項目</div>
-  <table class="review-table">
-    <thead>
-      <tr>
-        <th>驗收面向</th>
-        <th>說明</th>
-        <th>是否通過</th>
-        <th>修正建議</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><textarea class="editable-field" name="q1_title" oninput="autoResize(this)">知識正確性</textarea></td>
-        <td><textarea class="editable-field" name="q1_desc" oninput="autoResize(this)">課程中的觀念、方法、步驟、定義是否正確,是否與原定課綱標準相符（如：操作工具、實作方法等）</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q1" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q1" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q1_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q2_title" oninput="autoResize(this)">邏輯與推論合理性</textarea></td>
-        <td><textarea class="editable-field" name="q2_desc" oninput="autoResize(this)">觀念間的因果關係、分析/操作邏輯是否清楚，具備專業一致性</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q2" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q2" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q2_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q3_title" oninput="autoResize(this)">數據與案例時效性</textarea></td>
-        <td><textarea class="editable-field" name="q3_desc" oninput="autoResize(this)">是否使用有效資料（如近三年內數據），並標明時間與來源</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q3" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q3" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q3_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q4_title" oninput="autoResize(this)">用詞與術語專業度</textarea></td>
-        <td><textarea class="editable-field" name="q4_desc" oninput="autoResize(this)">專有名詞使用是否一致、準確，無口語誤導或錯譯（如 ETF ≠ 基金）</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q4" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q4" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q4_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q5_title" oninput="autoResize(this)">課綱對應度</textarea></td>
-        <td><textarea class="editable-field" name="q5_desc" oninput="autoResize(this)">各章節內容是否回應已確認的教學目標與課綱主題</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q5" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q5" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q5_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q6_title" oninput="autoResize(this)">舉例與情境設計</textarea></td>
-        <td><textarea class="editable-field" name="q6_desc" oninput="autoResize(this)">範例是否具體、貼近學員工作場景（如行銷、數據、工具操作），示範畫面是否可看清楚每個步驟，案例是否能支持教學重點</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q6" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q6" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q6_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q7_title" oninput="autoResize(this)">工具與版本正確性</textarea></td>
-        <td><textarea class="editable-field" name="q7_desc" oninput="autoResize(this)">課程示範的工具是否為「最新可用版本」，操作介面是否一致，是否避免教學中出現舊版畫面或作廢功能。</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q7" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q7" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q7_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-      <tr>
-        <td><textarea class="editable-field" name="q8_title" oninput="autoResize(this)">內容深度與適切性</textarea></td>
-        <td><textarea class="editable-field" name="q8_desc" oninput="autoResize(this)">課程深度是否符合平台定位：非過度淺層（無資訊價值）、不過度理論（無法應用）</textarea></td>
-        <td>
-          <div class="radio-group">
-            <div class="radio-item"><input type="radio" name="q8" value="是"><label>是</label></div>
-            <div class="radio-item"><input type="radio" name="q8" value="否"><label>否</label></div>
-          </div>
-        </td>
-        <td><textarea name="q8_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="section">
-  <div class="signature-section review-section">
-    <div class="signature-header">
-      <h3>檢核簽署</h3>
-      <div class="action-buttons no-print">
-        <button type="button" class="btn-icon btn-add" onclick="addReviewerRow()" title="新增檢核人員">+</button>
-        <button type="button" class="btn-icon btn-remove" onclick="deleteReviewerRow()" title="刪除最後一個檢核人員">−</button>
+  <form id="faForm">
+    <div class="section readonly-section" id="pmDataSection">
+      <span class="readonly-badge">📋 PM 填寫資料（唯讀）</span>
+      
+      <div class="section-title">一、課程課綱/腳本＆後台連結</div>
+      <div class="form-group">
+        <label>雲端連結：</label>
+        <textarea class="form-textarea" name="cloudLink" readonly oninput="autoResize(this)"></textarea>
       </div>
-    </div>
-    <div id="reviewerContainer">
-      <div class="signature-row">
-        <div class="signature-upload-container">
-          <label style="font-weight: bold; margin-bottom: 5px;">檢核簽署：</label>
-          <div class="signature-preview" data-type="reviewer" data-index="0">
-            <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
-          </div>
-          <div class="signature-buttons">
-            <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('reviewer', 0)">📷 上傳簽名</button>
-            <button type="button" class="btn-clear-signature" onclick="clearSignature('reviewer', 0)">🗑️清除</button>
-          </div>
-          <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'reviewer', 0)">
-        </div>
-        <div class="info-item">
-          <label>檢核/發佈日：</label>
-          <input type="date" name="reviewDateFull[]">
+      <div class="form-group">
+        <label>後台連結：</label>
+        <textarea class="form-textarea" name="backendLink" readonly oninput="autoResize(this)"></textarea>
+      </div>
+      
+      <div class="section-title" style="margin-top: 20px;">二、製作項目</div>
+      <div class="info-grid">
+        <div class="info-item"><label>課程組合：</label><textarea class="form-textarea" name="courseCombination" readonly oninput="autoResize(this)"></textarea></div>
+        <div class="info-item"><label>負責PM：</label><textarea class="form-textarea" name="pmName" readonly oninput="autoResize(this)"></textarea></div>
+        <div class="info-item"><label>章節名稱：</label><textarea class="form-textarea" name="chapterName" readonly oninput="autoResize(this)"></textarea></div>
+        <div class="info-item"><label>合作講師：</label><textarea class="form-textarea" name="instructorName" readonly oninput="autoResize(this)"></textarea></div>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 10%;">項次</th>
+            <th style="width: 40%;">單元名稱</th>
+            <th style="width: 20%;">分鐘數</th>
+            <th style="width: 30%;">驗收日期</th>
+          </tr>
+        </thead>
+        <tbody id="unitTableBody">
+          <tr>
+            <td colspan="4" style="text-align: center; color: #999;">尚未匯入 PM 資料</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="section-title" style="margin-top: 20px;">三、附件清單（請勾選收到之內容）</div>
+      <div class="checkbox-group">
+        <div class="checkbox-item"><input type="checkbox" id="attach1" name="attachments" disabled><label for="attach1">講稿／逐字稿</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="attach2" name="attachments" disabled><label for="attach2">課程教材／補充資料</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="attach3" name="attachments" disabled><label for="attach3">簡報檔（PPT／PDF）</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="attach4" name="attachments" disabled><label for="attach4">作業</label></div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="attach5" name="attachments" disabled><label for="attach5">其他：</label>
+          <textarea class="form-textarea" name="attachmentOther" readonly style="width: 250px; margin-left: 5px; min-height: 38px;" oninput="autoResize(this)"></textarea>
         </div>
       </div>
-    </div>
-  </div>
-  
-  <div class="signature-section supervisor-section">
-    <div class="signature-header">
-      <h3>主管簽署</h3>
-      <div class="action-buttons no-print">
-        <button type="button" class="btn-icon btn-add" onclick="addSupervisorRow()" title="新增主管">+</button>
-        <button type="button" class="btn-icon btn-remove" onclick="deleteSupervisorRow()" title="刪除最後一個主管">−</button>
+      
+      <div class="info-grid" style="margin-top: 20px;">
+        <div class="info-item"><label>上架人員：</label><textarea class="form-textarea" name="uploader" readonly oninput="autoResize(this)"></textarea></div>
+        <div class="info-item"><label>上架日：</label><input type="date" name="uploadDate" readonly></div>
       </div>
     </div>
-    <div id="supervisorContainer">
-      <div class="signature-row">
-        <div class="signature-upload-container">
-          <label style="font-weight: bold; margin-bottom: 5px;">主管簽署：</label>
-          <div class="signature-preview" data-type="supervisor" data-index="0">
-            <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+
+    <div class="section">
+      <div class="section-title">四、專業內容檢核項目</div>
+      <table class="review-table">
+        <thead>
+          <tr>
+            <th>驗收面向</th>
+            <th>說明</th>
+            <th>是否通過</th>
+            <th>修正建議</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><textarea class="editable-field" name="q1_title" oninput="autoResize(this)">知識正確性</textarea></td>
+            <td><textarea class="editable-field" name="q1_desc" oninput="autoResize(this)">課程中的觀念、方法、步驟、定義是否正確,是否與原定課綱標準相符（如：操作工具、實作方法等）</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q1" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q1" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q1_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q2_title" oninput="autoResize(this)">邏輯與推論合理性</textarea></td>
+            <td><textarea class="editable-field" name="q2_desc" oninput="autoResize(this)">觀念間的因果關係、分析/操作邏輯是否清楚，具備專業一致性</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q2" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q2" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q2_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q3_title" oninput="autoResize(this)">數據與案例時效性</textarea></td>
+            <td><textarea class="editable-field" name="q3_desc" oninput="autoResize(this)">是否使用有效資料（如近三年內數據），並標明時間與來源</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q3" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q3" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q3_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q4_title" oninput="autoResize(this)">用詞與術語專業度</textarea></td>
+            <td><textarea class="editable-field" name="q4_desc" oninput="autoResize(this)">專有名詞使用是否一致、準確，無口語誤導或錯譯（如 ETF ≠ 基金）</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q4" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q4" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q4_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q5_title" oninput="autoResize(this)">課綱對應度</textarea></td>
+            <td><textarea class="editable-field" name="q5_desc" oninput="autoResize(this)">各章節內容是否回應已確認的教學目標與課綱主題</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q5" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q5" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q5_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q6_title" oninput="autoResize(this)">舉例與情境設計</textarea></td>
+            <td><textarea class="editable-field" name="q6_desc" oninput="autoResize(this)">範例是否具體、貼近學員工作場景（如行銷、數據、工具操作），示範畫面是否可看清楚每個步驟，案例是否能支持教學重點</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q6" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q6" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q6_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q7_title" oninput="autoResize(this)">工具與版本正確性</textarea></td>
+            <td><textarea class="editable-field" name="q7_desc" oninput="autoResize(this)">課程示範的工具是否為「最新可用版本」，操作介面是否一致，是否避免教學中出現舊版畫面或作廢功能。</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q7" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q7" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q7_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+          <tr>
+            <td><textarea class="editable-field" name="q8_title" oninput="autoResize(this)">內容深度與適切性</textarea></td>
+            <td><textarea class="editable-field" name="q8_desc" oninput="autoResize(this)">課程深度是否符合平台定位：非過度淺層（無資訊價值）、不過度理論（無法應用）</textarea></td>
+            <td>
+              <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="q8" value="是"><label>是</label></div>
+                <div class="radio-item"><input type="radio" name="q8" value="否"><label>否</label></div>
+              </div>
+            </td>
+            <td><textarea name="q8_comment" placeholder="請輸入修正建議..." oninput="autoResize(this)"></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="signature-section review-section">
+        <div class="signature-header">
+          <h3>檢核簽署</h3>
+          <div class="action-buttons no-print">
+            <button type="button" class="btn-icon btn-add" onclick="addReviewerRow()" title="新增檢核人員">+</button>
+            <button type="button" class="btn-icon btn-remove" onclick="deleteReviewerRow()" title="刪除最後一個檢核人員">−</button>
           </div>
-          <div class="signature-buttons">
-            <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('supervisor', 0)">📷 上傳簽名</button>
-            <button type="button" class="btn-clear-signature" onclick="clearSignature('supervisor', 0)">🗑️ 清除</button>
-          </div>
-          <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'supervisor', 0)">
         </div>
-        <div class="info-item">
-          <label>日期：</label>
-          <input type="date" name="supervisorDate[]">
+        <div id="reviewerContainer">
+          <div class="signature-row">
+            <div class="signature-upload-container">
+              <label style="font-weight: bold; margin-bottom: 5px;">檢核簽署：</label>
+              <div class="signature-preview" data-type="reviewer" data-index="0">
+                <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+              </div>
+              <div class="signature-buttons">
+                <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('reviewer', 0)">📷 上傳簽名</button>
+                <button type="button" class="btn-clear-signature" onclick="clearSignature('reviewer', 0)">🗑️清除</button>
+              </div>
+              <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'reviewer', 0)">
+            </div>
+            <div class="info-item">
+              <label>檢核/發佈日：</label>
+              <input type="date" name="reviewDateFull[]">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="signature-section supervisor-section">
+        <div class="signature-header">
+          <h3>主管簽署</h3>
+          <div class="action-buttons no-print">
+            <button type="button" class="btn-icon btn-add" onclick="addSupervisorRow()" title="新增主管">+</button>
+            <button type="button" class="btn-icon btn-remove" onclick="deleteSupervisorRow()" title="刪除最後一個主管">−</button>
+          </div>
+        </div>
+        <div id="supervisorContainer">
+          <div class="signature-row">
+            <div class="signature-upload-container">
+              <label style="font-weight: bold; margin-bottom: 5px;">主管簽署：</label>
+              <div class="signature-preview" data-type="supervisor" data-index="0">
+                <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+              </div>
+              <div class="signature-buttons">
+                <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('supervisor', 0)">📷 上傳簽名</button>
+                <button type="button" class="btn-clear-signature" onclick="clearSignature('supervisor', 0)">🗑️ 清除</button>
+              </div>
+              <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'supervisor', 0)">
+            </div>
+            <div class="info-item">
+              <label>日期：</label>
+              <input type="date" name="supervisorDate[]">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="btn-group">
-  <button type="button" class="btn-import-json" onclick="document.getElementById('importFile').click()">📤 匯入 PM 資料</button>
-  <button type="button" class="btn-export-json" onclick="exportCompleteJSON()">💾 匯出完整 JSON</button>
-  <button type="button" class="btn-export-word" onclick="exportToWord()">📄 匯出為 Word</button>
-  <button type="button" class="btn-print" onclick="window.print()">🖨️ 列印 / 存為 PDF</button>
-</div>
-
-<input type="file" id="importFile" accept=".json" onchange="importPMData(event)">
-</form>
+    <div class="btn-group">
+      <button type="button" class="btn-import-json" onclick="document.getElementById('importFile').click()">📤 匯入 PM 資料</button>
+      <button type="button" class="btn-export-json" onclick="exportCompleteJSON()">💾 匯出完整 JSON</button>
+      <button type="button" class="btn-export-word" onclick="exportToWord()">📄 匯出為 Word</button>
+      <button type="button" class="btn-print" onclick="window.print()">🖨️ 列印 / 存為 PDF</button>
+    </div>
+    
+    <input type="file" id="importFile" accept=".json" onchange="importPMData(event)">
+  </form>
 </div>
 
 <script>
 let pmData = null;
-let signatureData = {
-reviewer: {},
-supervisor: {}
-};
+let signatureData = { reviewer: {}, supervisor: {} };
 
 function autoResize(textarea) {
-textarea.style.height = 'auto';
-textarea.style.height = textarea.scrollHeight + 'px';
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
 }
 
 window.addEventListener('load', function() {
-document.querySelectorAll('textarea').forEach(function(textarea) {
-  autoResize(textarea);
-});
+  document.querySelectorAll('textarea').forEach(function(textarea) {
+    autoResize(textarea);
+  });
 });
 
 function triggerSignatureUpload(type, index) {
-const container = type === 'reviewer' ? 
-  document.getElementById('reviewerContainer') : 
-  document.getElementById('supervisorContainer');
-const row = container.children[index];
-const input = row.querySelector('.signature-input');
-input.click();
+  const container = type === 'reviewer' ? document.getElementById('reviewerContainer') : document.getElementById('supervisorContainer');
+  const row = container.children[index];
+  const input = row.querySelector('.signature-input');
+  input.click();
 }
 
 function handleSignatureUpload(event, type, index) {
-const file = event.target.files[0];
-if (!file) return;
+  const file = event.target.files[0];
+  if (!file) return;
 
-if (!file.type.startsWith('image/')) {
-  alert('請上傳圖片檔案！');
-  return;
-}
+  if (!file.type.startsWith('image/')) {
+    alert('請上傳圖片檔案！');
+    return;
+  }
 
-const reader = new FileReader();
-reader.onload = function(e) {
-  const container = type === 'reviewer' ? 
-    document.getElementById('reviewerContainer') : 
-    document.getElementById('supervisorContainer');
-  const row = container.children[index];
-  const preview = row.querySelector('.signature-preview');
-  
-  preview.innerHTML = `<img src="${e.target.result}" alt="簽名">`;
-  preview.classList.add('has-image');
-  
-  if (!signatureData[type]) signatureData[type] = {};
-  signatureData[type][index] = e.target.result;
-};
-reader.readAsDataURL(file);
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const container = type === 'reviewer' ? document.getElementById('reviewerContainer') : document.getElementById('supervisorContainer');
+    const row = container.children[index];
+    const preview = row.querySelector('.signature-preview');
+    
+    preview.innerHTML = `<img src="${e.target.result}" alt="簽名">`;
+    preview.classList.add('has-image');
+    
+    if (!signatureData[type]) signatureData[type] = {};
+    signatureData[type][index] = e.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
 function clearSignature(type, index) {
-if (!confirm('確定要清除此簽名嗎？')) return;
+  if (!confirm('確定要清除此簽名嗎？')) return;
 
-const container = type === 'reviewer' ? 
-  document.getElementById('reviewerContainer') : 
-  document.getElementById('supervisorContainer');
-const row = container.children[index];
-const preview = row.querySelector('.signature-preview');
-const input = row.querySelector('.signature-input');
+  const container = type === 'reviewer' ? document.getElementById('reviewerContainer') : document.getElementById('supervisorContainer');
+  const row = container.children[index];
+  const preview = row.querySelector('.signature-preview');
+  const input = row.querySelector('.signature-input');
 
-preview.innerHTML = '<div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>';
-preview.classList.remove('has-image');
-input.value = '';
+  preview.innerHTML = '<div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>';
+  preview.classList.remove('has-image');
+  input.value = '';
 
-if (signatureData[type] && signatureData[type][index]) {
-  delete signatureData[type][index];
-}
+  if (signatureData[type] && signatureData[type][index]) {
+    delete signatureData[type][index];
+  }
 }
 
 function importPMData(event) {
-const file = event.target.files[0];
-if (!file) return;
+  const file = event.target.files[0];
+  if (!file) return;
 
-const reader = new FileReader();
-reader.onload = function(e) {
-  try {
-    const data = JSON.parse(e.target.result);
-    
-    if (data.formType !== 'PM') {
-      alert('⚠️ 這不是 PM 表單的 JSON 檔案！');
-      return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      
+      if (data.formType !== 'PM') {
+        alert('⚠️ 這不是 PM 表單的 JSON 檔案！');
+        return;
+      }
+
+      pmData = data;
+
+      document.querySelector('[name="cloudLink"]').value = data.cloudLink || '';
+      document.querySelector('[name="backendLink"]').value = data.backendLink || '';
+      document.querySelector('[name="courseCombination"]').value = data.courseCombination || '';
+      document.querySelector('[name="pmName"]').value = data.pmName || '';
+      document.querySelector('[name="chapterName"]').value = data.chapterName || '';
+      document.querySelector('[name="instructorName"]').value = data.instructorName || '';
+
+      const tbody = document.getElementById('unitTableBody');
+      tbody.innerHTML = '';
+      
+      if (data.units && data.units.length > 0) {
+        data.units.forEach((unit) => {
+          const newRow = tbody.insertRow();
+          newRow.innerHTML = `
+            <td><input type="text" value="${unit.no}" readonly style="background: #f5f5f5;"></td>
+            <td><input type="text" value="${unit.name || ''}" readonly></td>
+            <td><input type="text" value="${unit.duration || ''}" readonly></td>
+            <td><input type="text" value="${unit.reviewDate || ''}" readonly></td>
+          `;
+        });
+      }
+
+      if (data.attachments) {
+        document.getElementById('attach1').checked = data.attachments.lecture || false;
+        document.getElementById('attach2').checked = data.attachments.materials || false;
+        document.getElementById('attach3').checked = data.attachments.presentation || false;
+        document.getElementById('attach4').checked = data.attachments.homework || false;
+        document.getElementById('attach5').checked = data.attachments.other || false;
+        document.querySelector('[name="attachmentOther"]').value = data.attachments.otherText || '';
+      }
+
+      document.querySelector('[name="uploader"]').value = data.uploader || '';
+      document.querySelector('[name="uploadDate"]').value = data.uploadDate || '';
+
+      document.querySelectorAll('textarea').forEach(autoResize);
+
+      document.getElementById('importAlert').style.display = 'none';
+      showAlert('✅ PM 資料已成功匯入！現在可以開始填寫審核內容。', 'success');
+
+    } catch (error) {
+      alert('❌ JSON 檔案格式錯誤：' + error.message);
     }
-
-    pmData = data;
-
-    document.querySelector('[name="cloudLink"]').value = data.cloudLink || '';
-    document.querySelector('[name="backendLink"]').value = data.backendLink || '';
-    document.querySelector('[name="courseCombination"]').value = data.courseCombination || '';
-    document.querySelector('[name="pmName"]').value = data.pmName || '';
-    document.querySelector('[name="chapterName"]').value = data.chapterName || '';
-    document.querySelector('[name="instructorName"]').value = data.instructorName || '';
-
-    const tbody = document.getElementById('unitTableBody');
-    tbody.innerHTML = '';
-    
-    if (data.units && data.units.length > 0) {
-      data.units.forEach((unit) => {
-        const newRow = tbody.insertRow();
-        newRow.innerHTML = `
-          <td><input type="text" value="${unit.no}" readonly style="background: #f5f5f5;"></td>
-          <td><input type="text" value="${unit.name || ''}" readonly></td>
-          <td><input type="text" value="${unit.duration || ''}" readonly></td>
-          <td><input type="text" value="${unit.reviewDate || ''}" readonly></td>
-        `;
-      });
-    }
-
-    if (data.attachments) {
-      document.getElementById('attach1').checked = data.attachments.lecture || false;
-      document.getElementById('attach2').checked = data.attachments.materials || false;
-      document.getElementById('attach3').checked = data.attachments.presentation || false;
-      document.getElementById('attach4').checked = data.attachments.homework || false;
-      document.getElementById('attach5').checked = data.attachments.other || false;
-      document.querySelector('[name="attachmentOther"]').value = data.attachments.otherText || '';
-    }
-
-    document.querySelector('[name="uploader"]').value = data.uploader || '';
-    document.querySelector('[name="uploadDate"]').value = data.uploadDate || '';
-
-    document.querySelectorAll('textarea').forEach(autoResize);
-
-    document.getElementById('importAlert').style.display = 'none';
-    showAlert('✅ PM 資料已成功匯入！現在可以開始填寫審核內容。', 'success');
-  } catch (error) {
-    alert('❌ JSON 檔案格式錯誤：' + error.message);
-  }
-};
-reader.readAsText(file);
-event.target.value = '';
+  };
+  reader.readAsText(file);
+  event.target.value = '';
 }
 
 function collectCompleteData() {
-if (!pmData) {
-  alert('⚠️ 請先匯入 PM 資料！');
-  return null;
-}
+  if (!pmData) {
+    alert('⚠️ 請先匯入 PM 資料！');
+    return null;
+  }
 
-const data = {
-  ...pmData,
-  formType: 'FA_Complete',
-  faExportDate: new Date().toISOString(),
-  reviewItems: []
-};
+  const data = {
+    ...pmData,
+    formType: 'FA_Complete',
+    faExportDate: new Date().toISOString(),
+    reviewItems: []
+  };
 
-for (let i = 1; i <= 8; i++) {
-  const radio = document.querySelector(`input[name="q${i}"]:checked`);
-  data.reviewItems.push({
-    title: document.querySelector(`[name="q${i}_title"]`).value,
-    description: document.querySelector(`[name="q${i}_desc"]`).value,
-    passed: radio ? radio.value : '',
-    comment: document.querySelector(`[name="q${i}_comment"]`).value
-  });
-}
+  for (let i = 1; i <= 8; i++) {
+    const radio = document.querySelector(`input[name="q${i}"]:checked`);
+    data.reviewItems.push({
+      title: document.querySelector(`[name="q${i}_title"]`).value,
+      description: document.querySelector(`[name="q${i}_desc"]`).value,
+      passed: radio ? radio.value : '',
+      comment: document.querySelector(`[name="q${i}_comment"]`).value
+    });
+  }
 
-data.reviewers = [];
-const reviewerDates = document.querySelectorAll('[name="reviewDateFull[]"]');
-for (let i = 0; i < reviewerDates.length; i++) {
-  data.reviewers.push({
-    signature: signatureData.reviewer[i] || '',
-    date: reviewerDates[i].value
-  });
-}
+  data.reviewers = [];
+  const reviewerDates = document.querySelectorAll('[name="reviewDateFull[]"]');
+  for (let i = 0; i < reviewerDates.length; i++) {
+    data.reviewers.push({
+      signature: signatureData.reviewer[i] || '',
+      date: reviewerDates[i].value
+    });
+  }
 
-data.supervisors = [];
-const supervisorDates = document.querySelectorAll('[name="supervisorDate[]"]');
-for (let i = 0; i < supervisorDates.length; i++) {
-  data.supervisors.push({
-    signature: signatureData.supervisor[i] || '',
-    date: supervisorDates[i].value
-  });
-}
+  data.supervisors = [];
+  const supervisorDates = document.querySelectorAll('[name="supervisorDate[]"]');
+  for (let i = 0; i < supervisorDates.length; i++) {
+    data.supervisors.push({
+      signature: signatureData.supervisor[i] || '',
+      date: supervisorDates[i].value
+    });
+  }
 
-return data;
+  return data;
 }
 
 function exportCompleteJSON() {
-const data = collectCompleteData();
-if (!data) return;
+  const data = collectCompleteData();
+  if (!data) return;
 
-const jsonStr = JSON.stringify(data, null, 2);
-const blob = new Blob([jsonStr], { type: 'application/json' });
-const url = URL.createObjectURL(blob);
-const link = document.createElement('a');
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  
+  const filename = `FA_完整驗收表_${data.chapterName || '未命名'}_${new Date().toISOString().split('T')[0]}.json`;
+  
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 
-const filename = `FA_完整驗收表_${data.chapterName || '未命名'}_${new Date().toISOString().split('T')[0]}.json`;
-
-link.href = url;
-link.download = filename;
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-URL.revokeObjectURL(url);
-
-showAlert('✅ 完整 JSON 資料已成功匯出！', 'success');
+  showAlert('✅ 完整 JSON 資料已成功匯出！', 'success');
 }
 
 function exportToWord() {
-if (!pmData) {
-  alert('⚠️ 請先匯入 PM 資料！');
-  return;
-}
-
-const element = document.getElementById('exportContent').cloneNode(true);
-
-const noPrintElements = element.querySelectorAll('.no-print, .btn-group, .alert, .signature-buttons');
-noPrintElements.forEach(el => el.remove());
-
-const inputs = element.querySelectorAll('input');
-const textareas = element.querySelectorAll('textarea');
-
-const originalInputs = document.getElementById('exportContent').querySelectorAll('input');
-const originalTextareas = document.getElementById('exportContent').querySelectorAll('textarea');
-
-inputs.forEach((input, index) => {
-  const orig = originalInputs[index];
-  const span = document.createElement('span');
-  
-  if (input.type === 'text' || input.type === 'date' || input.type === 'url') {
-    span.innerText = orig.value || '';
-    input.parentNode.replaceChild(span, input);
-  } else if (input.type === 'checkbox' || input.type === 'radio') {
-    span.innerText = orig.checked ? '☑ ' : '☐ ';
-    input.parentNode.replaceChild(span, input);
+  if (!pmData) {
+    alert('⚠️ 請先匯入 PM 資料！');
+    return;
   }
-});
 
-textareas.forEach((textarea, index) => {
-  const orig = originalTextareas[index];
-  const div = document.createElement('div');
-  div.innerText = orig.value || '';
-  div.style.whiteSpace = 'pre-wrap';
-  div.style.padding = '0';
-  textarea.parentNode.replaceChild(div, textarea);
-});
+  const element = document.getElementById('exportContent').cloneNode(true);
 
-const html = `
-  <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-  <head>
-    <meta charset='utf-8'>
-    <title>Export HTML To Doc</title>
-    <style>
-      body { font-family: "Microsoft JhengHei", sans-serif; }
-      table { border-collapse: collapse; width: 100%; margin-bottom: 15px;}
-      th, td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
-      th { background-color: #f2f2f2; }
-      h1 { text-align: center; font-size: 20px;}
-      .section-title { font-weight: bold; font-size: 16px; margin-top: 20px; margin-bottom: 10px;}
-      .info-item { margin-bottom: 10px; }
-      .radio-group, .checkbox-group { margin-top: 5px; }
-      .signature-row { 
-        margin-bottom: 10px; 
-        display: grid; 
-        grid-template-columns: 1fr 1fr; 
-        gap: 15px; 
-        padding: 10px 15px;
-        border-radius: 8px;
-        border-left: 4px solid;
-      }
-      .review-section .signature-row {
-        background-color: #e3f2fd;
-        border-left-color: #2196F3;
-      }
-      .supervisor-section .signature-row {
-        background-color: #e8f5e9;
-        border-left-color: #4CAF50;
-      }
-      .signature-preview {
-        border: 1px solid #ccc;
-        padding: 5px;
-        min-height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .signature-preview img {
-        max-width: 100%;
-        max-height: 100px;
-      }
-      .readonly-section { background-color: #fafafa; padding: 15px; }
-    </style>
-  </head>
-  <body>
-    ${element.innerHTML}
-  </body>
-  </html>
-`;
+  const noPrintElements = element.querySelectorAll('.no-print, .btn-group, .alert, .signature-buttons');
+  noPrintElements.forEach(el => el.remove());
 
-const blob = new Blob(['\ufeff', html], {
-  type: 'application/msword'
-});
-const url = URL.createObjectURL(blob);
-const link = document.createElement('a');
-link.href = url;
-link.download = `課程內容專業驗收表_${pmData.chapterName || '未命名'}.doc`;
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
+  const inputs = element.querySelectorAll('input');
+  const textareas = element.querySelectorAll('textarea');
+
+  const originalInputs = document.getElementById('exportContent').querySelectorAll('input');
+  const originalTextareas = document.getElementById('exportContent').querySelectorAll('textarea');
+
+  inputs.forEach((input, index) => {
+    const orig = originalInputs[index];
+    const span = document.createElement('span');
+    
+    if (input.type === 'text' || input.type === 'date' || input.type === 'url') {
+      span.innerText = orig.value || '';
+      input.parentNode.replaceChild(span, input);
+    } else if (input.type === 'checkbox' || input.type === 'radio') {
+      span.innerText = orig.checked ? '☑ ' : '☐ ';
+      input.parentNode.replaceChild(span, input);
+    }
+  });
+
+  textareas.forEach((textarea, index) => {
+    const orig = originalTextareas[index];
+    const div = document.createElement('div');
+    div.innerText = orig.value || '';
+    div.style.whiteSpace = 'pre-wrap';
+    div.style.padding = '0';
+    textarea.parentNode.replaceChild(div, textarea);
+  });
+
+  /* 修正 3：匯出 Word 的字體也加上跨平台宣告 */
+  const html = `
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head>
+      <meta charset='utf-8'>
+      <title>Export HTML To Doc</title>
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 15px;}
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        h1 { text-align: center; font-size: 20px;}
+        .section-title { font-weight: bold; font-size: 16px; margin-top: 20px; margin-bottom: 10px;}
+        .info-item { margin-bottom: 10px; }
+        .radio-group, .checkbox-group { margin-top: 5px; }
+        .signature-row { 
+           margin-bottom: 10px; 
+           display: grid; 
+           grid-template-columns: 1fr 1fr; 
+           gap: 15px; 
+           padding: 10px 15px;
+          border-radius: 8px;
+          border-left: 4px solid;
+        }
+        .review-section .signature-row {
+          background-color: #e3f2fd;
+          border-left-color: #2196F3;
+        }
+        .supervisor-section .signature-row {
+          background-color: #e8f5e9;
+          border-left-color: #4CAF50;
+        }
+        .signature-preview {
+          border: 1px solid #ccc;
+          padding: 5px;
+          min-height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .signature-preview img {
+          max-width: 100%;
+          max-height: 100px;
+        }
+        .readonly-section { background-color: #fafafa; padding: 15px; }
+      </style>
+    </head>
+    <body>
+      ${element.innerHTML}
+    </body>
+    </html>
+  `;
+
+  const blob = new Blob(['\ufeff', html], {
+    type: 'application/msword'
+  });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `課程內容專業驗收表_${pmData.chapterName || '未命名'}.doc`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function addReviewerRow() {
-const container = document.getElementById('reviewerContainer');
-const index = container.children.length;
-const newRow = document.createElement('div');
-newRow.className = 'signature-row';
-newRow.innerHTML = `
-  <div class="signature-upload-container">
-    <label style="font-weight: bold; margin-bottom: 5px;">檢核簽署：</label>
-    <div class="signature-preview" data-type="reviewer" data-index="${index}">
-      <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+  const container = document.getElementById('reviewerContainer');
+  const index = container.children.length;
+  const newRow = document.createElement('div');
+  newRow.className = 'signature-row';
+  newRow.innerHTML = `
+    <div class="signature-upload-container">
+      <label style="font-weight: bold; margin-bottom: 5px;">檢核簽署：</label>
+      <div class="signature-preview" data-type="reviewer" data-index="${index}">
+        <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+      </div>
+      <div class="signature-buttons">
+        <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('reviewer', ${index})">📷 上傳簽名</button>
+        <button type="button" class="btn-clear-signature" onclick="clearSignature('reviewer', ${index})">🗑️ 清除</button>
+      </div>
+      <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'reviewer', ${index})">
     </div>
-    <div class="signature-buttons">
-      <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('reviewer', ${index})">📷 上傳簽名</button>
-      <button type="button" class="btn-clear-signature" onclick="clearSignature('reviewer', ${index})">🗑️ 清除</button>
+    <div class="info-item">
+      <label>檢核/發佈日：</label>
+      <input type="date" name="reviewDateFull[]">
     </div>
-    <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'reviewer', ${index})">
-  </div>
-  <div class="info-item">
-    <label>檢核/發佈日：</label>
-    <input type="date" name="reviewDateFull[]">
-  </div>
-`;
-container.appendChild(newRow);
+  `;
+  container.appendChild(newRow);
 }
 
 function deleteReviewerRow() {
-const container = document.getElementById('reviewerContainer');
-if (container.children.length <= 1) {
-  alert('至少需要保留一個檢核人員！');
-  return;
-}
-if (confirm('確定要刪除最後一個檢核人員嗎？')) {
-  const index = container.children.length - 1;
-  if (signatureData.reviewer[index]) {
-    delete signatureData.reviewer[index];
+  const container = document.getElementById('reviewerContainer');
+  if (container.children.length <= 1) {
+    alert('至少需要保留一個檢核人員！');
+    return;
   }
-  container.removeChild(container.lastChild);
-}
+  if (confirm('確定要刪除最後一個檢核人員嗎？')) {
+    const index = container.children.length - 1;
+    if (signatureData.reviewer[index]) {
+      delete signatureData.reviewer[index];
+    }
+    container.removeChild(container.lastChild);
+  }
 }
 
 function addSupervisorRow() {
-const container = document.getElementById('supervisorContainer');
-const index = container.children.length;
-const newRow = document.createElement('div');
-newRow.className = 'signature-row';
-newRow.innerHTML = `
-  <div class="signature-upload-container">
-    <label style="font-weight: bold; margin-bottom: 5px;">主管簽署：</label>
-    <div class="signature-preview" data-type="supervisor" data-index="${index}">
-      <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+  const container = document.getElementById('supervisorContainer');
+  const index = container.children.length;
+  const newRow = document.createElement('div');
+  newRow.className = 'signature-row';
+  newRow.innerHTML = `
+    <div class="signature-upload-container">
+      <label style="font-weight: bold; margin-bottom: 5px;">主管簽署：</label>
+      <div class="signature-preview" data-type="supervisor" data-index="${index}">
+        <div class="signature-placeholder">點擊下方按鈕上傳簽名圖片</div>
+      </div>
+      <div class="signature-buttons">
+        <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('supervisor', ${index})">📷 上傳簽名</button>
+        <button type="button" class="btn-clear-signature" onclick="clearSignature('supervisor', ${index})">🗑️ 清除</button>
+      </div>
+      <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'supervisor', ${index})">
     </div>
-    <div class="signature-buttons">
-      <button type="button" class="btn-upload-signature" onclick="triggerSignatureUpload('supervisor', ${index})">📷 上傳簽名</button>
-      <button type="button" class="btn-clear-signature" onclick="clearSignature('supervisor', ${index})">🗑️ 清除</button>
+    <div class="info-item">
+      <label>日期：</label>
+      <input type="date" name="supervisorDate[]">
     </div>
-    <input type="file" class="signature-input" accept="image/*" onchange="handleSignatureUpload(event, 'supervisor', ${index})">
-  </div>
-  <div class="info-item">
-    <label>日期：</label>
-    <input type="date" name="supervisorDate[]">
-  </div>
-`;
-container.appendChild(newRow);
+  `;
+  container.appendChild(newRow);
 }
 
 function deleteSupervisorRow() {
-const container = document.getElementById('supervisorContainer');
-if (container.children.length <= 1) {
-  alert('至少需要保留一個主管！');
-  return;
-}
-if (confirm('確定要刪除最後一個主管嗎？')) {
-  const index = container.children.length - 1;
-  if (signatureData.supervisor[index]) {
-    delete signatureData.supervisor[index];
+  const container = document.getElementById('supervisorContainer');
+  if (container.children.length <= 1) {
+    alert('至少需要保留一個主管！');
+    return;
   }
-  container.removeChild(container.lastChild);
-}
+  if (confirm('確定要刪除最後一個主管嗎？')) {
+    const index = container.children.length - 1;
+    if (signatureData.supervisor[index]) {
+      delete signatureData.supervisor[index];
+    }
+    container.removeChild(container.lastChild);
+  }
 }
 
 function showAlert(message, type) {
-const existingAlerts = document.querySelectorAll('.alert-success');
-existingAlerts.forEach(el => el.remove());
+  const existingAlerts = document.querySelectorAll('.alert-success');
+  existingAlerts.forEach(el => el.remove());
 
-const alert = document.createElement('div');
-alert.className = `alert alert-${type}`;
-alert.innerHTML = `<strong>${message}</strong>`;
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type}`;
+  alert.innerHTML = `<strong>${message}</strong>`;
 
-const alertContainer = document.getElementById('alertContainer');
-if (alertContainer) {
-  alertContainer.appendChild(alert);
+  const alertContainer = document.getElementById('alertContainer');
+  if (alertContainer) {
+    alertContainer.appendChild(alert);
 
-  setTimeout(() => {
-    alert.style.transition = 'opacity 0.5s';
-    alert.style.opacity = '0';
     setTimeout(() => {
-      if (alert.parentNode) {
-        alert.remove();
-      }
-    }, 500);
-  }, 3000);
-}
+      alert.style.transition = 'opacity 0.5s';
+      alert.style.opacity = '0';
+      setTimeout(() => {
+        if (alert.parentNode) {
+          alert.remove();
+        }
+      }, 500);
+    }, 3000);
+  }
 }
 </script>
 </body>
